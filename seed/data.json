@@ -1,0 +1,165 @@
+[
+    {
+        "name": "Amazon Rainforest Expedition",
+        "duration": 12,
+        "maxGroupSize": 8,
+        "difficulty": "difficult",
+        "ratingsAverage": 4.8,
+        "ratingsQuantity": 45,
+        "price": 1799,
+        "priceDiscount": 1599,
+        "summary": "Explore the untouched biodiversity of the Amazon jungle.",
+        "description": "Join expert naturalists on a journey deep into the Amazon. Witness exotic wildlife, navigate river tributaries, and learn from local tribes. Ideal for adventure seekers.",
+        "imageCover": "https://images.unsplash.com/photo-1566397753058-48e2b7d3f3f3?auto=format&fit=crop&w=800&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1558981403-c5f989f96b5b?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1502920917128-1aa500764b1e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=800&q=80"
+        ],
+        "startDates": [
+            "2025-07-01T09:00:00.000Z",
+            "2025-08-15T09:00:00.000Z"
+        ],
+        "startLocation": {
+            "description": "Manaus, Brazil",
+            "type": "Point",
+            "coordinates": [
+                -60.0217,
+                -3.1190
+            ],
+            "address": "Manaus Port, AM, Brazil"
+        },
+        "locations": [
+            {
+                "description": "Jungle Camp",
+                "type": "Point",
+                "coordinates": [
+                    -60.0235,
+                    -3.1231
+                ],
+                "day": 1
+            },
+            {
+                "description": "Hidden Waterfall",
+                "type": "Point",
+                "coordinates": [
+                    -60.0350,
+                    -3.1452
+                ],
+                "day": 3
+            }
+        ],
+        "guides": [
+            "665edc2c1d4f3a49d3a12f01",
+            "665edc391d4f3a49d3a12f02"
+        ]
+    },
+    {
+        "name": "Desert Safari Morocco",
+        "duration": 6,
+        "maxGroupSize": 15,
+        "difficulty": "easy",
+        "ratingsAverage": 4.6,
+        "ratingsQuantity": 72,
+        "price": 899,
+        "priceDiscount": 749,
+        "summary": "Ride camels and sleep under the stars in the Moroccan Sahara.",
+        "description": "Experience the desert like never before. Camel treks, Berber music nights, and endless dunes await in this immersive Sahara tour.",
+        "imageCover": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=800&q=80"
+        ],
+        "startDates": [
+            "2025-09-10T09:00:00.000Z",
+            "2025-10-05T09:00:00.000Z"
+        ],
+        "startLocation": {
+            "description": "Marrakech, Morocco",
+            "type": "Point",
+            "coordinates": [
+                -7.9811,
+                31.6295
+            ],
+            "address": "Marrakech Old Town, Morocco"
+        },
+        "locations": [
+            {
+                "description": "Atlas Mountains",
+                "type": "Point",
+                "coordinates": [
+                    -7.9808,
+                    31.3045
+                ],
+                "day": 1
+            },
+            {
+                "description": "Zagora Dunes",
+                "type": "Point",
+                "coordinates": [
+                    -5.8392,
+                    30.3295
+                ],
+                "day": 3
+            }
+        ],
+        "guides": [
+            "665edc2c1d4f3a49d3a12f01"
+        ]
+    },
+    {
+        "name": "Scandinavian Fjord Cruise",
+        "duration": 9,
+        "maxGroupSize": 20,
+        "difficulty": "medium",
+        "ratingsAverage": 4.9,
+        "ratingsQuantity": 87,
+        "price": 2199,
+        "priceDiscount": 1999,
+        "summary": "Sail through the stunning fjords of Norway and explore Viking heritage.",
+        "description": "This tour combines breathtaking nature with rich cultural history. Explore UNESCO World Heritage fjords, quaint fishing villages, and Viking museums.",
+        "imageCover": "https://images.unsplash.com/photo-1549893074-32e3c2ec1af3?auto=format&fit=crop&w=800&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1503377980832-274b5b59a99d?auto=format&fit=crop&w=800&q=80",
+            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+        ],
+        "startDates": [
+            "2025-06-20T09:00:00.000Z",
+            "2025-07-25T09:00:00.000Z"
+        ],
+        "startLocation": {
+            "description": "Bergen, Norway",
+            "type": "Point",
+            "coordinates": [
+                5.3242,
+                60.39299
+            ],
+            "address": "Bergen Port, Norway"
+        },
+        "locations": [
+            {
+                "description": "Aurlandsfjord",
+                "type": "Point",
+                "coordinates": [
+                    7.1834,
+                    60.9072
+                ],
+                "day": 2
+            },
+            {
+                "description": "Geirangerfjord",
+                "type": "Point",
+                "coordinates": [
+                    7.2074,
+                    62.1015
+                ],
+                "day": 5
+            }
+        ],
+        "guides": [
+            "665edc391d4f3a49d3a12f02"
+        ]
+    }
+]
