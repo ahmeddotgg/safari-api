@@ -110,10 +110,8 @@ const tourSchema = new Schema({
     guides: [{
         type: Types.ObjectId,
         ref: 'User'
-    }]
-}, {
-    timestamps: true
-});
+    }],
+}, { timestamps: true });
 
 const Tour = model('Tour', tourSchema);
 export default Tour;
