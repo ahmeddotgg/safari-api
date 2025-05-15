@@ -1,5 +1,17 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import Tour from '../models/tour-model';
+
+export const getTrendingTours = (req: Request, res: Response, next: NextFunction) => {
+    res.locals.query = {
+        ...req.query,
+        limit: '3',
+        sort: '-ratingAverage,price',
+        fields: 'name,price,ratingAverage,summary,difficulty'
+    };
+
+    console.log('✅ After assignment =>', res.locals.query);
+    next();
+};
 
 export const createTour = async (req: Request, res: Response) => {
     try {
@@ -18,17 +30,18 @@ export const createTour = async (req: Request, res: Response) => {
 
 export const getAllTours = async (req: Request, res: Response) => {
     try {
-        const query_object = { ...req.query }
-        const special_queries = ['page', 'sort', 'limit', 'fields']
-        special_queries.forEach(item => delete query_object[item])
+        const query_object = { ...res.locals.query || req.query };
+        const special_queries = ['page', 'sort', 'limit', 'fields'];
+        special_queries.forEach(item => delete query_object[item]);
 
-        let query_string = JSON.stringify(query_object)
-        query_string = query_string.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
+        let query_string = JSON.stringify(query_object);
+        query_string = query_string.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
 
-        let query = Tour.find(JSON.parse(query_string))
+        let query = Tour.find(JSON.parse(query_string));
 
         // special filtering
-        const { sort, fields, page, limit } = req.query
+        const { sort, fields, page, limit } = res.locals.query || req.query;
+
         // sorting
         if (sort) {
             const sort_by = typeof sort === 'string'
@@ -36,6 +49,7 @@ export const getAllTours = async (req: Request, res: Response) => {
                 : '';
             query = query.sort(sort_by);
         }
+
         // fields population
         if (fields) {
             const selected_fields = typeof fields === 'string'
@@ -43,28 +57,29 @@ export const getAllTours = async (req: Request, res: Response) => {
                 : '';
             query = query.select(selected_fields);
         } else {
-            query = query.select('-__v -createdAt -updatedAt')
+            query = query.select('-__v -createdAt -updatedAt');
         }
-        // pagination
-        const page_query = Number(page) || 1
-        const limit_query = Number(limit) || 100
-        const skip = (page_query - 1) * limit_query
-        query = query.skip(skip).limit(limit_query)
 
+        // pagination
+        const page_query = Number(page) || 1;
+        const limit_query = Number(limit) || 100;
+        const skip = (page_query - 1) * limit_query;
+        query = query.skip(skip).limit(limit_query);
 
         const tours = await query;
         res.status(200).json({
             status: 'success',
             items: tours.length,
             data: { tours }
-        })
+        });
     } catch (error) {
         res.status(400).json({
             status: 'fail',
             message: (error as Error).message
         });
     }
-}
+};
+
 
 export const getSingleTour = async (req: Request, res: Response) => {
     try {
