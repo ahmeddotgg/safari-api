@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
+import slugify from 'slugify';
 
 const { Schema, model, Types } = mongoose;
 
-// GeoJSON schema for startLocation and locations
 const geoPointSchema = new Schema({
     type: {
         type: String,
@@ -21,7 +21,6 @@ const geoPointSchema = new Schema({
     address: String
 }, { _id: false });
 
-// Location stop sub-schema
 const locationSchema = new Schema({
     type: {
         type: String,
@@ -45,7 +44,13 @@ const tourSchema = new Schema({
     name: {
         type: String,
         required: [true, 'A tour name is required'],
-        trim: true
+        trim: true,
+        maxLength: [40, 'A tour name must have less or equal than 40 letters'],
+        minLength: [10, 'A tour name must have more than or equal than 10 letters']
+    },
+    slug: {
+        type: String,
+        unique: true
     },
     duration: {
         type: Number,
@@ -78,7 +83,11 @@ const tourSchema = new Schema({
         required: [true, 'Price is required']
     },
     priceDiscount: {
-        type: Number
+        type: Number,
+        validate: function (this: any, val: number) {
+            return val < this.price;
+        },
+        message: 'Discount price ({VALUE}) should be below regular price'
     },
     summary: {
         type: String,
@@ -112,6 +121,11 @@ const tourSchema = new Schema({
         ref: 'User'
     }],
 }, { timestamps: true });
+
+tourSchema.pre('save', function (next) {
+    this.slug = slugify(this.name, { lower: true })
+    next()
+})
 
 const Tour = model('Tour', tourSchema);
 export default Tour;
